@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 import { useAuth } from './context/AuthContext'
 import Navbar from './components/layout/Navbar'
 
@@ -40,6 +41,7 @@ const PublicOnly = ({ children }) => {
 const App = () => {
   return (
     <div className="min-h-screen">
+      <Toaster position="top-right" />
       <Navbar />
       <Routes>
         {/* Public */}
