@@ -23,7 +23,11 @@ const Login = () => {
       toast.success(`Welcome back, ${res.data.user.name}! 👋`)
       navigate(res.data.user.role === 'admin' ? '/admin/dashboard' : '/dashboard')
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Invalid credentials. Try again.')
+      if (!err.response) {
+        toast.error('Cannot connect to server. Please check your backend deployment!')
+      } else {
+        toast.error(err.response.data?.message || 'Invalid credentials. Try again.')
+      }
     } finally {
       setLoading(false)
     }
