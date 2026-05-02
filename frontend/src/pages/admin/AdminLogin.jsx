@@ -36,11 +36,7 @@ const AdminLogin = () => {
         navigate('/admin/dashboard')
       }
     } catch (err) {
-      if (!err.response) {
-        toast.error('Cannot connect to server. Please check your backend deployment!')
-      } else {
-        toast.error(err.response.data?.message || 'Authentication failed.')
-      }
+      toast.error(err.response?.data?.message || 'Authentication failed.')
     } finally {
       setLoading(false)
     }

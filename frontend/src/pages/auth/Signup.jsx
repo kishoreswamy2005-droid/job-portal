@@ -30,11 +30,7 @@ const Signup = () => {
       toast.success('Account created successfully! 🎉')
       navigate('/dashboard')
     } catch (err) {
-      if (!err.response) {
-        toast.error('Cannot connect to server. Please check your backend deployment!')
-      } else {
-        toast.error(err.response.data?.message || 'Registration failed. Try again.')
-      }
+      toast.error(err.response?.data?.message || 'Registration failed. Try again.')
     } finally {
       setLoading(false)
     }
